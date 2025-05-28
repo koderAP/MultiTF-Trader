@@ -1,95 +1,108 @@
-# Multi-Timeframe Trading Strategy
+**MultiTF-Trader** is a modular trading system built in Python that
+implements a multi-timeframe trading strategy using 15-minute entry
+signals and 1-hour confirmations. It supports both backtesting via
+`backtesting.py` and live trading on the Binance Testnet.
 
-A sophisticated trading system that implements a multi-timeframe strategy using Python, with both backtesting and live trading capabilities on Binance Testnet.
+# Key Features {#key-features .unnumbered}
 
-## Project Overview
+-   **Multi-Timeframe Strategy**: Entry signals on 15m; confirmation on
+    1h timeframe
 
-This project implements a trading strategy that combines multiple timeframes (15-minute entries with 1-hour confirmations) to make trading decisions. The system includes both backtesting capabilities using `backtesting.py` and live trading functionality through Binance Testnet API.
+-   **Robust Backtesting**: Simulate trades on historical data with
+    logging
 
-### Key Features
+-   **Live Trading Support**: Integrates with Binance Testnet API
 
-- Multi-timeframe strategy implementation (15m entries, 1h confirmations)
-- Comprehensive backtesting system with detailed trade logging
-- Live trading integration with Binance Testnet
-- Trade comparison and analysis tools
-- Modular, class-based architecture for maintainability and extensibility
+-   **Detailed Logging**: Trade metadata, P&L, timestamps, and more
 
-## Project Structure
+-   **Modular Design**: Clean, extensible, class-based architecture
 
-```
-├── README.md
-├── requirements.txt
-├── config/
-│   └── config.py           # Configuration settings and API keys
-├── src/
-│   ├── strategy/
-│   │   ├── base.py        # Base strategy class
-│   │   └── multi_tf.py    # Multi-timeframe strategy implementation
-│   ├── backtesting/
-│   │   ├── backtest.py    # Backtesting engine
-│   │   └── analyzer.py    # Backtest results analysis
-│   ├── trading/
-│   │   ├── exchange.py    # Binance API wrapper
-│   │   └── executor.py    # Trade execution logic
-│   └── utils/
-│       ├── logger.py      # Logging utilities
-│       └── data.py        # Data handling utilities
-└── data/
-    ├── backtest_trades.csv    # Backtest trade logs
-    └── live_trades.csv        # Live trading logs
+# Strategy Description {#strategy-description .unnumbered}
 
-```
+The trading logic consists of:
 
+-   Entry signals generated using indicators on 15-minute candles
 
-## Strategy Details
+-   Confirmation based on 1-hour trend and volatility filters
 
-The strategy combines signals from two timeframes:
-- 15-minute timeframe for entry signals
-- 1-hour timeframe for trade confirmation
+-   Risk management using stop-loss, take-profit, and dynamic position
+    sizing based on volatility and account equity
 
-Key components:
-- Entry signals generated on 15m timeframe
-- Trade confirmation using 1h timeframe indicators
-- Risk management rules implemented at both timeframes
-- Position sizing based on volatility and account equity
+# Project Structure {#project-structure .unnumbered}
 
-## Trade Logging
+    MultiTF-Trader/
+    ├── README.md
+    ├── requirements.txt
+    ├── config/
+    │   └── config.py           # API keys and config
+    ├── src/
+    │   ├── strategy/
+    │   │   ├── base.py         # Base strategy class
+    │   │   └── multi_tf.py     # Multi-timeframe strategy logic
+    │   ├── backtesting/
+    │   │   ├── backtest.py     # Backtesting engine
+    │   │   └── analyzer.py     # Backtest analysis
+    │   ├── trading/
+    │   │   ├── exchange.py     # Binance API interface
+    │   │   └── executor.py     # Order execution logic
+    │   └── utils/
+    │       ├── logger.py       # Logging utility
+    │       └── data.py         # Data handling
+    └── data/
+        ├── backtest_trades.csv # Trade logs (backtest)
+        └── live_trades.csv     # Trade logs (live)
 
-Both backtest and live trades are logged with:
-- Timestamp
-- Trade direction (long/short)
-- Entry price
-- Exit price
-- Position size
-- PnL
-- Additional metadata
+# Trade Logging {#trade-logging .unnumbered}
 
-## Development Guidelines
+Trades (both simulated and live) include the following fields:
 
-- Document all classes and methods
-- Use logging for debugging and monitoring
+-   Timestamp
 
-## Dependencies
+-   Trade direction (Long/Short)
 
-Key packages used:
-- backtesting.py
-- python-binance
-- pandas
-- numpy
-- ta (Technical Analysis library)
-- python-dotenv
+-   Entry and exit prices
 
-## Notes
+-   Position size
 
-- Always test thoroughly on Binance Testnet before live deployment
-- Monitor trade execution latency
-- Regularly validate strategy performance
-- Keep API keys secure and never commit them to version control
+-   Profit and Loss (PnL)
 
+-   Metadata (e.g., indicators, timeframe tags)
 
+# Development Guidelines {#development-guidelines .unnumbered}
 
-## Acknowledgments
+-   Comment and document all public classes and methods
 
-- Binance for providing the Testnet API
-- backtesting.py library contributors
-- Technical Analysis library contributors 
+-   Use structured logging for monitoring and debugging
+
+-   Keep API keys in `.env` files and **never** commit them to version
+    control
+
+# Dependencies {#dependencies .unnumbered}
+
+Main Python packages used:
+
+-   `backtesting.py`
+
+-   `python-binance`
+
+-   `pandas`, `numpy`
+
+-   `ta` (Technical Analysis Library)
+
+-   `python-dotenv`
+
+# Notes {#notes .unnumbered}
+
+-   Always validate strategy thoroughly using Binance Testnet
+
+-   Monitor execution latency during live trading
+
+-   Regularly analyze performance and update strategy if needed
+
+# Acknowledgments {#acknowledgments .unnumbered}
+
+-   Binance for providing the Testnet API
+
+-   `backtesting.py` developers
+
+-   Contributors to the `ta` technical analysis library
