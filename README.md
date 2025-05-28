@@ -1,23 +1,23 @@
-**MultiTF-Trader** is a modular trading system built in Python that
+# MultiTF-Trader is a modular trading system built in Python that
 implements a multi-timeframe trading strategy using 15-minute entry
 signals and 1-hour confirmations. It supports both backtesting via
 `backtesting.py` and live trading on the Binance Testnet.
 
-# Key Features {#key-features .unnumbered}
+## Key Features 
 
--   **Multi-Timeframe Strategy**: Entry signals on 15m; confirmation on
+-   Multi-Timeframe Strategy: Entry signals on 15m; confirmation on
     1h timeframe
 
--   **Robust Backtesting**: Simulate trades on historical data with
+-   Robust Backtesting: Simulate trades on historical data with
     logging
 
--   **Live Trading Support**: Integrates with Binance Testnet API
+-   Live Trading Support: Integrates with Binance Testnet API
 
--   **Detailed Logging**: Trade metadata, P&L, timestamps, and more
+-   Detailed Logging: Trade metadata, P&L, timestamps, and more
 
--   **Modular Design**: Clean, extensible, class-based architecture
+-   Modular Design: Clean, extensible, class-based architecture
 
-# Strategy Description {#strategy-description .unnumbered}
+## Strategy Description 
 
 The trading logic consists of:
 
@@ -28,7 +28,7 @@ The trading logic consists of:
 -   Risk management using stop-loss, take-profit, and dynamic position
     sizing based on volatility and account equity
 
-# Project Structure {#project-structure .unnumbered}
+## Project Structure 
 
     MultiTF-Trader/
     ├── README.md
@@ -52,7 +52,7 @@ The trading logic consists of:
         ├── backtest_trades.csv # Trade logs (backtest)
         └── live_trades.csv     # Trade logs (live)
 
-# Trade Logging {#trade-logging .unnumbered}
+## Trade Logging 
 
 Trades (both simulated and live) include the following fields:
 
@@ -68,16 +68,16 @@ Trades (both simulated and live) include the following fields:
 
 -   Metadata (e.g., indicators, timeframe tags)
 
-# Development Guidelines {#development-guidelines .unnumbered}
+## Development Guidelines 
 
 -   Comment and document all public classes and methods
 
 -   Use structured logging for monitoring and debugging
 
--   Keep API keys in `.env` files and **never** commit them to version
+-   Keep API keys in `.env` files and never commit them to version
     control
 
-# Dependencies {#dependencies .unnumbered}
+## Dependencies 
 
 Main Python packages used:
 
@@ -91,7 +91,7 @@ Main Python packages used:
 
 -   `python-dotenv`
 
-# Notes {#notes .unnumbered}
+## Notes 
 
 -   Always validate strategy thoroughly using Binance Testnet
 
@@ -99,7 +99,7 @@ Main Python packages used:
 
 -   Regularly analyze performance and update strategy if needed
 
-# Acknowledgments {#acknowledgments .unnumbered}
+## Acknowledgments 
 
 -   Binance for providing the Testnet API
 
